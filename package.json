@@ -1,0 +1,19 @@
+{
+  "name": "regexp-to-afn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "npx browserify main.js -o dist/bundle.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "automata.js": "^0.2.1",
+    "browserify": "^17.0.0",
+    "browsify": "0.0.4",
+    "viz.js": "^2.1.2"
+  }
+}
