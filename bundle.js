@@ -1,22 +1,7 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-'use strict'
-const regParser = require('automata.js');
-
-const btn_create=document.getElementById('btn_create');
-const txt_regexp=document.getElementById('txt_regexp');
-const graph = document.getElementById('graph')
-
-btn_create.addEventListener('click',(e)=>{
-    const parser = new regParser.RegParser(txt_regexp.value);
-    const nfa = parser.parseToNFA();
-    const result =Viz(nfa.toDotScript(), 'svg', 'dot');
-    console.log(result)
-    graph.innerHTML=result;
-})
-},{"automata.js":2}],2:[function(require,module,exports){
 module.exports = require('./src/regparser');
 
-},{"./src/regparser":5}],3:[function(require,module,exports){
+},{"./src/regparser":4}],2:[function(require,module,exports){
 var DOTSCRIPTHEADER = 'digraph finite_state_machine {\n' + '  rankdir = LR;\n';
 var DOTSCRIPTEND = '}\n';
 
@@ -62,7 +47,7 @@ exports.toDotScript = function(fsm) {
       initialStatesStartDotScript + transitionDotScript + DOTSCRIPTEND;
 }
 
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 var TOKEN_TYPE = {
   LBRACK: '(',
   RBRACK: ')',
@@ -170,7 +155,7 @@ module.exports.Lexer = Lexer;
 module.exports.EMPTYTOKEN = EMPTYTOKEN;
 module.exports.TOKEN_TYPE = TOKEN_TYPE;
 
-},{}],5:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 var DotConverter = require('./dot-converter');
 var Lexer = require('./lexer').Lexer;
 var EMPTYTOKEN = require('./lexer').EMPTYTOKEN;
@@ -617,4 +602,19 @@ RegParser.prototype._consume = function(type) {
 module.exports.RegParser = RegParser;
 module.exports.FSM = FSM;
 
-},{"./dot-converter":3,"./lexer":4}]},{},[1]);
+},{"./dot-converter":2,"./lexer":3}],5:[function(require,module,exports){
+'use strict'
+const regParser = require('automata.js');
+
+const btn_create=document.getElementById('btn_create');
+const txt_regexp=document.getElementById('txt_regexp');
+const graph = document.getElementById('graph')
+
+btn_create.addEventListener('click',(e)=>{
+    const parser = new regParser.RegParser(txt_regexp.value);
+    const nfa = parser.parseToNFA();
+    const result =Viz(nfa.toDotScript(), 'svg', 'dot');
+    console.log(result)
+    graph.innerHTML=result;
+})
+},{"automata.js":1}]},{},[5]);
